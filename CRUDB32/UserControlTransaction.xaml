@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="CRUDB32.UserControlTransaction"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CRUDB32"
+             mc:Ignorable="d" 
+             d:DesignHeight="540" d:DesignWidth="1010">
+    <Grid Background="#FFA6ECE2">
+        <TextBlock HorizontalAlignment="Left" Margin="518,17,0,0" TextWrapping="Wrap" Text="Transaksi Item" VerticalAlignment="Top" FontSize="25" FontFamily="Calisto MT"/>
+        <Label Content="Date" HorizontalAlignment="Left" Margin="251,89,0,0" VerticalAlignment="Top" RenderTransformOrigin="5.771,1.462"/>
+        <Label Content="Total" HorizontalAlignment="Left" Margin="633,73,0,0" VerticalAlignment="Top"/>
+        <TextBox IsReadOnly="True" Name="TxtTotal1" HorizontalAlignment="Left" Height="47" Margin="727,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="212"/>
+        <TextBox Name="TxtOrderDate" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="308,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Items" HorizontalAlignment="Left" Margin="251,122,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TxtPrice" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="469,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="123" TextChanged="TxtPrice_TextChanged"/>
+        <ComboBox Name="CBItems" ItemsSource="{Binding Items}" DisplayMemberPath="Name" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="251,148,0,0" VerticalAlignment="Top" Width="177" SelectionChanged="CBItems_SelectionChanged_1"/>
+        <Label Content="Price" HorizontalAlignment="Left" Margin="433,122,0,0" VerticalAlignment="Top"/>
+        <Label Content="Quantity" HorizontalAlignment="Left" Margin="727,121,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TxtQuantity" PreviewTextInput="TxtQuantity_PreviewTextInput" HorizontalAlignment="Left" Height="23" Margin="727,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="57" TextChanged="TxtQuantity_TextChanged"/>
+        <Button Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Margin="819,139,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.415,0.45" Click="Button_Click_1"/>
+        <Label HorizontalAlignment="Left" Margin="94,192,0,0" VerticalAlignment="Top"/>
+        <Label Content="Detail" HorizontalAlignment="Left" Margin="251,184,0,0" VerticalAlignment="Top"/>
+        <DataGrid Name="DataGridTransaction" DataContext="{Binding Source=List}" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="251,215,0,0" VerticalAlignment="Top" Height="107" Width="688" SelectionChanged="DataGridTransaction_SelectionChanged"  CanUserDeleteRows="True" Background="#FFF5FAFF">
+            <DataGrid.Columns >
+                <!--<DataGridTextColumn x:Name="ID_Transaction" Width="50" Binding="{Binding Id}" Header="ID"/>-->
+                <DataGridTextColumn x:Name="Transaction_name" Width="50" Binding="{Binding Name}" Header="Name"/>
+                <DataGridTextColumn x:Name="PriceItem" Width="50" Binding="{Binding Price}" Header="Price"/>
+                <DataGridTextColumn x:Name="Quantity" Width="50" Binding="{Binding Quantity}" Header="@"/>
+                <DataGridTextColumn x:Name="TotalPrice" Width="100" Binding="{Binding TotalPrice}" Header="Total"/>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" x:Name="btnDelete"
+                                Click="btnDelete_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Total" HorizontalAlignment="Left" Margin="699,346,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TxtTotal2" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="819,349,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Pay" HorizontalAlignment="Left" Margin="699,377,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TxtPay" HorizontalAlignment="Left" PreviewTextInput="TxtPay_PreviewTextInput" TextChanged="TxtPay_TextChanged" Height="23" Margin="819,372,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Changes" HorizontalAlignment="Left" Margin="699,405,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.036,0.577"/>
+        <TextBox Name="TxtChange" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="819,400,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Name="BtnSubmitTrans" Content="Submit" HorizontalAlignment="Left" Margin="830,453,0,0" VerticalAlignment="Top" Width="109" Click="BtnSubmitTrans_Click"/>
+        <TextBox Name="TxtStock" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="633,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" TextChanged="TxtStock_TextChanged"/>
+        <Label Content="Stock" HorizontalAlignment="Left" Margin="633,122,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TxtIdTrans" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="308,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="251,55,0,0" VerticalAlignment="Top"/>
+
+
+
+
+
+    </Grid>
+</UserControl>
